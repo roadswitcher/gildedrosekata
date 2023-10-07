@@ -1,7 +1,7 @@
 bin
 obj
 *.sln.DotSettings.user
-.vs
+.vscode
 vendor
 .idea
 *.iml

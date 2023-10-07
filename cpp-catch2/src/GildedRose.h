@@ -20,5 +20,10 @@ public:
     GildedRose(vector<Item> & items);
     
     void updateQuality();
+
+//     void processItem():
+
+// private:
+//     bool is_legendary();
 };
 

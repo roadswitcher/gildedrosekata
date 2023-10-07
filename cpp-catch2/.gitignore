@@ -2,3 +2,6 @@
 /subprojects/Catch2-*/
 /subprojects/packagecache/
 /cmake-build-*/
+Testing/*
+build/
+.vscode
