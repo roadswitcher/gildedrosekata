@@ -3,7 +3,6 @@
 
 using namespace std;
 
-namespace GR {
 
 class Item {
 public:
@@ -28,5 +27,3 @@ private:
   bool itemQualityUnderMaxValue(Item &item);
   bool itemIsConjured(Item &item);
 };
-
-} // namespace GR

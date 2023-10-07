@@ -1,8 +1,6 @@
 #include "GildedRose.h"
 #include <algorithm>
 
-using namespace GR;
-
 bool GildedRose::itemIsLegendary(Item &item) {
   vector<string> legendaries = {"Sulfuras, Hand of Ragnaros"};
 

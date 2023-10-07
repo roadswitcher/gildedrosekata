@@ -4,8 +4,6 @@
 
 #include "GildedRose.h"
 
-using namespace GR;
-
 std::ostream &operator<<(std::ostream &os, const Item &obj) {
   return os << "name: " << obj.name << ", sellIn: " << obj.sellIn
             << ", quality: " << obj.quality;

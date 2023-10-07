@@ -1,8 +1,6 @@
 #include "GildedRose.h"
 #include <algorithm>
 
-using namespace GR;
-
 GildedRose::GildedRose(vector<Item> &items) : items(items) {}
 
 void GildedRose::processItem(Item &item) {
