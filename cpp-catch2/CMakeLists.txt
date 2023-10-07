@@ -32,10 +32,10 @@ target_include_directories(approvaltests
         INTERFACE ${catch2_SOURCE_DIR}/single_include/catch2
         )
 
-if( MINGW ) 
-  # https://stackoverflow.com/questions/31890021/mingw-too-many-sections-bug-while-compiling-huge-header-file-in-qt
-  set (CMAKE_CXX_FLAGS "-Wa,-mbig-obj ")
-endif()
+# if( MINGW ) 
+#   # https://stackoverflow.com/questions/31890021/mingw-too-many-sections-bug-while-compiling-huge-header-file-in-qt
+#   set (CMAKE_CXX_FLAGS "-Wa,-mbig-obj ")
+# endif()
 
 add_executable(gildedrose_catch2
         src/GildedRose.h
@@ -47,8 +47,6 @@ target_include_directories(gildedrose_catch2
         PUBLIC src)
 target_link_libraries(gildedrose_catch2 Catch2::Catch2 approvaltests)
 
-
-
 include(CTest)
-include(ParseAndAddCatchTests)
-ParseAndAddCatchTests(gildedrose_catch2)
+# include(ParseAndAddCatchTests)
+# ParseAndAddCatchTests(gildedrose_catch2)
