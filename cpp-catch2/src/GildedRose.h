@@ -33,5 +33,4 @@ private:
   void processBackstagePasses(Item &item);
   void processAgedItem(Item &item);
   void processConjuredItem(Item &item);
-
 };
