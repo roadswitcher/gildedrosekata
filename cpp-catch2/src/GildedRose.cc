@@ -4,13 +4,17 @@ GildedRose::GildedRose(vector<Item> & items) : items(items)
 {}
     
 
-// void GildedRose::processItem(){
+void GildedRose::processItem(){
 
-//     return 0;
+}
+
+// bool GildedRose::is_legendary(Item & item){
+//     vector<string> legendaryItems = { "Sulfuras, Hand of Ragnaros" };
 // }
+
 void GildedRose::updateQuality() 
 {
-    for (auto item : items)
+    for (auto & item : items)
     {
         if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert")
         {

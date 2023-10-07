@@ -21,9 +21,7 @@ public:
     
     void updateQuality();
 
-//     void processItem():
+    void processItem();
 
-// private:
-//     bool is_legendary();
 };
 
