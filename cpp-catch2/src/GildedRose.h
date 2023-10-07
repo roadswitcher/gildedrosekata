@@ -20,17 +20,18 @@ public:
   void updateQuality();
 
 private:
-    const int MIN_QUALITY = 0;
-    const int MAX_QUALITY = 50;
-  bool itemQualityUnderMaxValue(Item &item);
-  bool itemIsAged(Item & item );
+  const int MIN_QUALITY = 0;
+  const int MAX_QUALITY = 50;
+
+  bool itemIsAged(Item &item);
   bool itemIsConjured(Item &item);
   bool itemIsLegendary(Item &item);
-  bool itemIsBackstagePasses( Item & item);
-  void processItem(Item & item);
-  void processLegendaryItem(Item& item);
+  bool itemIsBackstagePasses(Item &item);
+
+  void processItem(Item &item);
+  void processLegendaryItem(Item &item);
   void processBackstagePasses(Item &item);
-  void processAgedItem(Item& item);
-  void processConjuredItem(Item & item);
+  void processAgedItem(Item &item);
+  void processConjuredItem(Item &item);
 
 };

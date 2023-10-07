@@ -58,7 +58,8 @@ TEST_CASE("30 Day Check") {
 
   for (auto i = 1; i <= 30; i++) {
     app.updateQuality();
-    std::cout << "------ day " << i << "-------" << std::endl;
+    std::cout << "\n-------- day " << i << "--------" << std::endl;
+    std::cout << "name, sellIn, quality" << std::endl;
     for (auto item : app.items) {
       std::cout << item.name << ", " << item.sellIn << ", " << item.quality
                 << endl;
