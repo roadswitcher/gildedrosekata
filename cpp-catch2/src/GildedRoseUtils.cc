@@ -14,6 +14,16 @@ bool GildedRose::itemIsConjured(Item &item) {
   return item.name.rfind("Conjured", 0) == 0;
 }
 
+bool GildedRose::itemIsAged(Item & item){
+    return item.name.rfind("Aged", 0)==0;
+}
+
+bool GildedRose::itemIsBackstagePasses(Item & item){
+    return item.name.rfind("Backstage", 0)==0;
+}
+
 bool GildedRose::itemQualityUnderMaxValue(Item &item) {
   return item.quality < 50;
 }
+
+

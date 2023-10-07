@@ -3,58 +3,50 @@
 
 GildedRose::GildedRose(vector<Item> &items) : items(items) {}
 
+void GildedRose::processLegendaryItem(Item &item) { /* NOOP */
+}
+
+void GildedRose::processAgedItem(Item &item) {
+  item.sellIn -= 1;
+
+  item.quality += 1;
+  item.quality = min(item.quality, MAX_QUALITY);
+}
+
+void GildedRose::processBackstagePasses(Item &item) {
+  item.sellIn -= 1;
+
+  item.quality -= (item.sellIn >= 0) ? 1 : 2;
+  item.quality = max(item.quality, MIN_QUALITY);
+}
+
 void GildedRose::processItem(Item &item) {
-  if (item.name != "Aged Brie" &&
-      item.name != "Backstage passes to a TAFKAL80ETC concert") {
-    if (item.quality > 0 && !itemIsLegendary(item)) {
-      item.quality -= 1;
-    }
-  } else {
-    if (itemQualityUnderMaxValue(item)) {
-      item.quality = item.quality + 1;
+  item.sellIn -= 1;
 
-      if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
-        if (item.sellIn < 11) {
-          if (itemQualityUnderMaxValue(item)) {
-            item.quality = item.quality + 1;
-          }
-        }
+  item.quality -= (item.sellIn >= 0) ? 1 : 2;
+  item.quality = max(item.quality, MIN_QUALITY);
+}
 
-        if (item.sellIn < 6) {
-          if (itemQualityUnderMaxValue(item)) {
-            item.quality = item.quality + 1;
-          }
-        }
-      }
-    }
-  }
+void GildedRose::processConjuredItem(Item &item) {
+  item.sellIn -= 1;
 
-  if (!itemIsLegendary(item)) {
-    item.sellIn = item.sellIn - 1;
-  }
-
-  if (item.sellIn < 0) {
-    if (item.name != "Aged Brie") {
-      if (item.name != "Backstage passes to a TAFKAL80ETC concert") {
-        if (item.quality > 0) {
-          if (!itemIsLegendary(item)) {
-            item.quality = item.quality - 1;
-          }
-        }
-      } else {
-        item.quality = item.quality - item.quality;
-      }
-    } else {
-      if (itemQualityUnderMaxValue(item)) {
-        item.quality = item.quality + 1;
-      }
-    }
-  }
+  item.quality -= (item.sellIn >= 0) ? 2 : 4;
+  item.quality = max(item.quality, MIN_QUALITY);
 }
 
 
 void GildedRose::updateQuality() {
   for (auto &item : items) {
-    processItem(item);
+    if (itemIsAged(item)) {
+      processAgedItem(item);
+    } else if (itemIsBackstagePasses(item)) {
+      processBackstagePasses(item);
+    } else if (itemIsLegendary(item)) {
+      processLegendaryItem(item);
+    } else if (itemIsConjured(item)) {
+      processConjuredItem(item);
+    } else {
+      processItem(item);
+    }
   }
 }
