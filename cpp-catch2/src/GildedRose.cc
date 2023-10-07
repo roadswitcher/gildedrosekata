@@ -8,22 +8,22 @@ GildedRose::GildedRose(vector<Item> &items) : items(items) {}
 void GildedRose::processItem(Item &item) {
   if (item.name != "Aged Brie" &&
       item.name != "Backstage passes to a TAFKAL80ETC concert") {
-    if (item.quality > 0 && !isItemLegendary(item)) {
+    if (item.quality > 0 && !itemIsLegendary(item)) {
       item.quality -= 1;
     }
   } else {
-    if (isQualityUnderMaxValue(item)) {
+    if (itemQualityUnderMaxValue(item)) {
       item.quality = item.quality + 1;
 
       if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
         if (item.sellIn < 11) {
-          if (item.quality < 50) {
+          if (itemQualityUnderMaxValue(item)) {
             item.quality = item.quality + 1;
           }
         }
 
         if (item.sellIn < 6) {
-          if (isQualityUnderMaxValue(item)) {
+          if (itemQualityUnderMaxValue(item)) {
             item.quality = item.quality + 1;
           }
         }
@@ -31,7 +31,7 @@ void GildedRose::processItem(Item &item) {
     }
   }
 
-  if (!isItemLegendary(item)) {
+  if (!itemIsLegendary(item)) {
     item.sellIn = item.sellIn - 1;
   }
 
@@ -39,7 +39,7 @@ void GildedRose::processItem(Item &item) {
     if (item.name != "Aged Brie") {
       if (item.name != "Backstage passes to a TAFKAL80ETC concert") {
         if (item.quality > 0) {
-          if (!isItemLegendary(item)) {
+          if (!itemIsLegendary(item)) {
             item.quality = item.quality - 1;
           }
         }
@@ -47,29 +47,13 @@ void GildedRose::processItem(Item &item) {
         item.quality = item.quality - item.quality;
       }
     } else {
-      if (isQualityUnderMaxValue(item)) {
+      if (itemQualityUnderMaxValue(item)) {
         item.quality = item.quality + 1;
       }
     }
   }
 }
 
-bool GildedRose::isItemLegendary(Item &item) {
-  vector<string> legendaries = {"Sulfuras, Hand of Ragnaros"};
-
-  if (binary_search(legendaries.begin(), legendaries.end(), item.name)) {
-    return true;
-  }
-  return false;
-}
-
-bool GildedRose::isConjured(Item &item) {
-  return item.name.rfind("Conjured", 0) == 0;
-}
-
-bool GildedRose::isQualityUnderMaxValue(Item &item) {
-  return item.quality < 50;
-}
 
 void GildedRose::updateQuality() {
   for (auto &item : items) {

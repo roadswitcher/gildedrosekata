@@ -4,6 +4,7 @@
 using namespace std;
 
 namespace GR {
+
 class Item {
 public:
   string name;
@@ -23,8 +24,9 @@ public:
   void processItem(Item &item);
 
 private:
-  bool isItemLegendary(Item &item);
-  bool isQualityUnderMaxValue(Item &item);
-  bool isConjured(Item &item);
+  bool itemIsLegendary(Item &item);
+  bool itemQualityUnderMaxValue(Item &item);
+  bool itemIsConjured(Item &item);
 };
+
 } // namespace GR

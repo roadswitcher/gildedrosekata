@@ -40,6 +40,7 @@ target_include_directories(approvaltests
 add_executable(gildedrose_catch2
         src/GildedRose.h
         src/GildedRose.cc
+        src/GildedRoseUtils.cc
         test/gildedrose_catch.cpp
         test/main.cpp)
 set_target_properties(gildedrose_catch2 PROPERTIES CXX_STANDARD 11)
