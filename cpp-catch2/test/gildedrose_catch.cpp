@@ -60,12 +60,11 @@ TEST_CASE("30 Day Check") {
     app.updateQuality();
     std::cout << "------ day " << i << "-------" << std::endl;
     for(auto item : app.items){
-        std::cout << item.name << "," << item.sellIn << "," <<item.quality << endl;
+        std::cout << item.name << ", " << item.sellIn << ", " <<item.quality << endl;
     }
   }
 
   for (auto j = 0; j < 9; j++) {
-    std::cout << app.items[j].name << std::endl;
     REQUIRE(app.items[j].sellIn == day30items[j].sellIn);
     REQUIRE(app.items[j].quality == day30items[j].quality);
   }

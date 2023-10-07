@@ -25,6 +25,7 @@ public:
 
 private:
     bool isItemLegendary (Item & item);
+    bool isQualityUnderMaxValue ( Item & item );
 
 };
 

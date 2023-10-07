@@ -12,10 +12,14 @@ void GildedRose::processItem(){
 bool GildedRose::isItemLegendary(Item & item){
     vector<string> legendaries = {"Sulfuras, Hand of Ragnaros"};
 
-    if ( item.name != "Sulfuras, Hand of Ragnaros" ) {
+    if ( binary_search(legendaries.begin(), legendaries.end(), item.name) ) {
         return true;
     } 
     return false;
+}
+
+bool GildedRose::isQualityUnderMaxValue(Item & item){
+    return item.quality<50;
 }
 
 void GildedRose::updateQuality() 
@@ -26,7 +30,7 @@ void GildedRose::updateQuality()
         {
             if (item.quality > 0)
             {
-                if (item.name != "Sulfuras, Hand of Ragnaros")
+                if (!isItemLegendary(item))
                 {
                     item.quality = item.quality - 1;
                 }
@@ -34,7 +38,7 @@ void GildedRose::updateQuality()
         }
         else
         {
-            if (item.quality < 50)
+            if (isQualityUnderMaxValue(item))
             {
                 item.quality = item.quality + 1;
 
@@ -50,7 +54,7 @@ void GildedRose::updateQuality()
 
                     if (item.sellIn < 6)
                     {
-                        if (item.quality < 50)
+                        if (isQualityUnderMaxValue(item))
                         {
                             item.quality = item.quality + 1;
                         }
@@ -59,7 +63,7 @@ void GildedRose::updateQuality()
             }
         }
 
-        if (item.name != "Sulfuras, Hand of Ragnaros")
+        if (!isItemLegendary(item))
         {
             item.sellIn = item.sellIn - 1;
         }
@@ -72,7 +76,7 @@ void GildedRose::updateQuality()
                 {
                     if (item.quality > 0)
                     {
-                        if (item.name != "Sulfuras, Hand of Ragnaros")
+                        if (!isItemLegendary(item))
                         {
                             item.quality = item.quality - 1;
                         }
@@ -85,7 +89,7 @@ void GildedRose::updateQuality()
             }
             else
             {
-                if (item.quality < 50)
+                if (isQualityUnderMaxValue(item))
                 {
                     item.quality = item.quality + 1;
                 }
