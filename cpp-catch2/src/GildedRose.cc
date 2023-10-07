@@ -1,4 +1,5 @@
 #include "GildedRose.h"
+#include <algorithm>
 
 GildedRose::GildedRose(vector<Item> & items) : items(items)
 {}
@@ -8,9 +9,14 @@ void GildedRose::processItem(){
 
 }
 
-// bool GildedRose::is_legendary(Item & item){
-//     vector<string> legendaryItems = { "Sulfuras, Hand of Ragnaros" };
-// }
+bool GildedRose::isItemLegendary(Item & item){
+    vector<string> legendaries = {"Sulfuras, Hand of Ragnaros"};
+
+    if ( item.name != "Sulfuras, Hand of Ragnaros" ) {
+        return true;
+    } 
+    return false;
+}
 
 void GildedRose::updateQuality() 
 {

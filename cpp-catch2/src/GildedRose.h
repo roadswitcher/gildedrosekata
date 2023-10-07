@@ -23,5 +23,8 @@ public:
 
     void processItem();
 
+private:
+    bool isItemLegendary (Item & item);
+
 };
 
