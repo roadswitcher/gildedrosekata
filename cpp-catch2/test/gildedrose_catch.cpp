@@ -4,6 +4,8 @@
 
 #include "GildedRose.h"
 
+using namespace GR;
+
 std::ostream &operator<<(std::ostream &os, const Item &obj) {
   return os << "name: " << obj.name << ", sellIn: " << obj.sellIn
             << ", quality: " << obj.quality;
@@ -56,11 +58,12 @@ TEST_CASE("30 Day Check") {
 
   GildedRose app(items);
 
-  for (auto i = 1; i <=30; i++) {
+  for (auto i = 1; i <= 30; i++) {
     app.updateQuality();
     std::cout << "------ day " << i << "-------" << std::endl;
-    for(auto item : app.items){
-        std::cout << item.name << ", " << item.sellIn << ", " <<item.quality << endl;
+    for (auto item : app.items) {
+      std::cout << item.name << ", " << item.sellIn << ", " << item.quality
+                << endl;
     }
   }
 

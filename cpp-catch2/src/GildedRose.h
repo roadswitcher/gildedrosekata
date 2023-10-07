@@ -3,29 +3,28 @@
 
 using namespace std;
 
-class Item
-{
+namespace GR {
+class Item {
 public:
-    string name;
-    int sellIn;
-    int quality;
-    Item(string name, int sellIn, int quality) : name(name), sellIn(sellIn), quality(quality) 
-    {}
+  string name;
+  int sellIn;
+  int quality;
+  Item(string name, int sellIn, int quality)
+      : name(name), sellIn(sellIn), quality(quality) {}
 };
 
-class GildedRose
-{
+class GildedRose {
 public:
-    vector<Item> & items;
-    GildedRose(vector<Item> & items);
-    
-    void updateQuality();
+  vector<Item> &items;
+  GildedRose(vector<Item> &items);
 
-    void processItem();
+  void updateQuality();
+
+  void processItem(Item &item);
 
 private:
-    bool isItemLegendary (Item & item);
-    bool isQualityUnderMaxValue ( Item & item );
-
+  bool isItemLegendary(Item &item);
+  bool isQualityUnderMaxValue(Item &item);
+  bool isConjured(Item &item);
 };
-
+} // namespace GR
