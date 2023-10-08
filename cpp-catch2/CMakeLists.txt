@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.14..3.16)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_C_COMPILER "clang")
 set(CMAKE_CXX_COMPILER "clang++")
+set(CMAKE_CXX_CLANG_TIDY "clang-tidy; -checks=cppcoreguidlines-*")
 
 
 project(GildedRoseKata VERSION 1.0

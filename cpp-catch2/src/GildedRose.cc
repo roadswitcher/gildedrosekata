@@ -35,8 +35,6 @@ void GildedRose::processItem(Item &item) {
     item.quality -= 1;
   else
     item.quality -= 2;
-
-  //   item.quality -= (item.sellIn >= 0) ? 1 : 2;
   item.quality = max(item.quality, MIN_QUALITY);
 }
 
@@ -45,13 +43,11 @@ void GildedRose::processConjuredItem(Item &item) {
     item.quality -= 2;
   else
     item.quality -= 4;
-  //   item.quality -= (item.sellIn >= 0) ? 2 : 4;
   item.quality = max(item.quality, MIN_QUALITY);
 }
 
 void GildedRose::updateQuality() {
   for (auto &item : items) {
-
     updateSellDate(item);
 
     if (itemIsAged(item)) {
