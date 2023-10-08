@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.14..3.16)
 set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_C_COMPILER "clang")
+set(CMAKE_CXX_COMPILER "clang++")
 project(GildedRoseKata VERSION 1.0
         DESCRIPTION "The GildedRose Refactoring kata for an approval testing approach"
         LANGUAGES CXX)
+
+
 include(FetchContent)
 
 FetchContent_Declare(
@@ -43,7 +47,7 @@ add_executable(gildedrose_catch2
         src/GildedRoseUtils.cc
         test/gildedrose_catch.cpp
         test/main.cpp)
-set_target_properties(gildedrose_catch2 PROPERTIES CXX_STANDARD 11)
+set_target_properties(gildedrose_catch2 PROPERTIES CXX_STANDARD 20) 
 target_include_directories(gildedrose_catch2
         PUBLIC src)
 target_link_libraries(gildedrose_catch2 Catch2::Catch2 approvaltests)
