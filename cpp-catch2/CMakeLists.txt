@@ -2,10 +2,11 @@ cmake_minimum_required(VERSION 3.14..3.16)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_C_COMPILER "clang")
 set(CMAKE_CXX_COMPILER "clang++")
+
+
 project(GildedRoseKata VERSION 1.0
         DESCRIPTION "The GildedRose Refactoring kata for an approval testing approach"
         LANGUAGES CXX)
-
 
 include(FetchContent)
 

@@ -28,9 +28,8 @@ private:
   bool itemIsLegendary(Item &item);
   bool itemIsBackstagePasses(Item &item);
 
-  void updateItemSellDate(Item &item);
   void processItem(Item &item);
-  void processLegendaryItem(Item &item);
+  void processLegendary(Item &item);
   void processBackstagePasses(Item &item);
   void processAgedItem(Item &item);
   void processConjuredItem(Item &item);

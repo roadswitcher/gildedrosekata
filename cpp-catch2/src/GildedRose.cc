@@ -3,7 +3,7 @@
 
 GildedRose::GildedRose(vector<Item> &items) : items(items) {}
 
-void GildedRose::processLegendaryItem(Item &item) { /* NOOP */
+void GildedRose::processLegendary(Item &item) { /* NOOP */
 }
 
 void GildedRose::processAgedItem(Item &item) {
@@ -15,7 +15,8 @@ void GildedRose::processAgedItem(Item &item) {
 void GildedRose::processBackstagePasses(Item &item) {
   item.sellIn -= 1;
   item.quality += 1;
-  if (item.sellIn < 10) {
+  
+  if (item.sellIn < 11) {
     item.quality += 1;
   }
   if (item.sellIn < 6) {
@@ -48,7 +49,7 @@ void GildedRose::updateQuality() {
     } else if (itemIsBackstagePasses(item)) {
       processBackstagePasses(item);
     } else if (itemIsLegendary(item)) {
-      processLegendaryItem(item);
+      processLegendary(item);
     } else if (itemIsConjured(item)) {
       processConjuredItem(item);
     } else {
