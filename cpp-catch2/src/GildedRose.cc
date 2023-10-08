@@ -7,15 +7,13 @@ void GildedRose::processLegendary(Item &item) { /* NOOP */
 }
 
 void GildedRose::processAgedItem(Item &item) {
-  item.sellIn -= 1;
   item.quality += (item.sellIn >= 0) ? 1 : 2;
   item.quality = min(item.quality, MAX_QUALITY);
 }
 
 void GildedRose::processBackstagePasses(Item &item) {
-  item.sellIn -= 1;
   item.quality += 1;
-  
+
   if (item.sellIn < 11) {
     item.quality += 1;
   }
@@ -30,19 +28,19 @@ void GildedRose::processBackstagePasses(Item &item) {
 }
 
 void GildedRose::processItem(Item &item) {
-  item.sellIn -= 1;
   item.quality -= (item.sellIn >= 0) ? 1 : 2;
   item.quality = max(item.quality, MIN_QUALITY);
 }
 
 void GildedRose::processConjuredItem(Item &item) {
-  item.sellIn -= 1;
   item.quality -= (item.sellIn >= 0) ? 2 : 4;
   item.quality = max(item.quality, MIN_QUALITY);
 }
 
 void GildedRose::updateQuality() {
   for (auto &item : items) {
+
+    updateSellDate(item);
 
     if (itemIsAged(item)) {
       processAgedItem(item);

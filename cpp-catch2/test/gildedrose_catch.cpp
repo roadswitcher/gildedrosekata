@@ -27,8 +27,33 @@ TEST_CASE("VerifyQualityDrops") {
   REQUIRE(app.items[0].quality == 18);
 }
 
-TEST_CASE("30 Day Check") {
+TEST_CASE("CheckConjuredItem") {
+  vector<Item> items;
+  items.push_back(Item("Conjured Test Item", 2, 4));
+  items.push_back(Item("Test Item", 2, 4));
+  GildedRose app(items);
+  app.updateQuality();
+  REQUIRE(app.items[0].quality == 2);
+  REQUIRE(app.items[1].quality == 3);
+  app.updateQuality();
+  REQUIRE(app.items[0].quality == 0);
+  REQUIRE(app.items[1].quality == 2);
+}
 
+TEST_CASE("BrieTests") {
+  vector<Item> items;
+  items.push_back(Item("Aged Brie 1", 2, 0));
+  GildedRose app(items);
+  app.updateQuality();
+  REQUIRE(app.items[0].quality == 1);
+  app.updateQuality();
+  REQUIRE(app.items[0].quality == 2);
+  app.updateQuality();
+  REQUIRE(app.items[0].quality == 4);
+}
+
+TEST_CASE("30 Day Check") {
+  // Copied results from text approval testing folder
   vector<Item> items;
   items.push_back(Item("+5 Dexterity Vest", 10, 20));
   items.push_back(Item("Aged Brie", 2, 0));
@@ -58,7 +83,7 @@ TEST_CASE("30 Day Check") {
 
   for (auto i = 1; i <= 30; i++) {
     app.updateQuality();
-    std::cout << "\n-------- day " << i << "--------" << std::endl;
+    std::cout << "\n-------- day " << i << " --------" << std::endl;
     std::cout << "name, sellIn, quality" << std::endl;
     for (auto item : app.items) {
       std::cout << item.name << ", " << item.sellIn << ", " << item.quality

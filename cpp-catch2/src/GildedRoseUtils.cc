@@ -21,3 +21,8 @@ bool GildedRose::itemIsAged(Item &item) {
 bool GildedRose::itemIsBackstagePasses(Item &item) {
   return item.name.rfind("Backstage", 0) == 0;
 }
+
+void GildedRose::updateSellDate(Item &item) {
+  if (!itemIsLegendary(item))
+    item.sellIn -= 1;
+}
